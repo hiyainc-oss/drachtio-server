@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+MACHINE_NAME=aws-build
+
+   # AWS_ACCESS_KEY_ID=
+   # AWS_SECRET_ACCESS_KEY=
+   # AWS_SESSION_TOKEN=
+
+   AWS_INSTANCE_TYPE="t2.micro"
+   AWS_AMI=
+   AWS_INSTANCE_PROFILE=
+
+   AWS_KEYPAIR_NAME=
+   AWS_SSH_KEYPATH=
+
+   AWS_VPC_ID=
+   AWS_SUBNET_ID=
+   AWS_SECURITY_GROUP=
+   AWS_SECURITY_GROUP_READONLY=
+
+   AWS_TAGS=
+   AWS_USERDATA=
+
+   AWS_ENDPOINT=
+   AWS_INSECURE_TRANSPORT=
+
+   AWS_SSH_PORT=
+   AWS_SSH_USER=
+
+   AWS_VOLUME_TYPE=
+   AWS_ROOT_SIZE=
+   AWS_DEVICE_NAME=
+
+   AWS_DEFAULT_REGION=
+   AWS_ZONE=
+
+   # MACHINE_DOCKER_INSTALL_URL="https://get.docker.com"
+   # ENGINE_REGISTRY_MIRROR=
+
+docker-machine create \
+    --driver amazonec2 \
+    $MACHINE_NAME
+
+   --amazonec2-use-private-address # Force the usage of private IP address
+   --amazonec2-private-address-only # Only use a private IP address
+
+   --amazonec2-open-port [--amazonec2-open-port option --amazonec2-open-port option] # Make the specified port number accessible from the Internet
+   --amazonec2-retries "5" # Set retry count for recoverable failures (use -1 to disable)
+
+   --amazonec2-use-ebs-optimized-instance # Create an EBS optimized instance
+   --amazonec2-monitoring # Set this flag to enable CloudWatch monitoring
+
+   --amazonec2-request-spot-instance # Set this flag to request spot instance
+   --amazonec2-spot-price "0.50" # AWS spot instance bid price (in dollar)
+   --amazonec2-block-duration-minutes "0" # AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360)
+
+   --engine-env [--engine-env option --engine-env option] # Specify environment variables to set in the engine
+   --engine-insecure-registry [--engine-insecure-registry option --engine-insecure-registry option] # Specify insecure registries to allow with the created engine
+   --engine-label [--engine-label option --engine-label option] # Specify labels for the created engine
+   --engine-opt [--engine-opt option --engine-opt option] # Specify arbitrary flags to include with the created engine in the form flag=value
+   --engine-storage-driver # Specify a storage driver to use with the engine
+   --tls-san [--tls-san option --tls-san option] # Support extra SANs for TLS certs

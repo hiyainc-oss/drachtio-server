@@ -1,6 +1,7 @@
 [submodule "deps/sofia-sip"]
         path = deps/sofia-sip
-        url = https://github.com/davehorton/sofia-sip.git
+	url = git@github.com:hiyainc-oss/sofia-sip
+	branch = hiya-single-pai
 [submodule "deps/libzrtp"]
 	path = deps/libzrtp
 	url = https://github.com/traviscross/libzrtp.git
